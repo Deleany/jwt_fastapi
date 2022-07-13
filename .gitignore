@@ -1,4 +1,4 @@
-.gitignore
 .idea
 Pipfile.lock
 Pipfile
+.gitignore
