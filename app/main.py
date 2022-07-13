@@ -1,6 +1,6 @@
 import uvicorn
 from fastapi import FastAPI
-# from model import PostSchema
+from model import PostSchema
 
 
 posts = [
@@ -34,7 +34,7 @@ def greet():
 
 
 # 2 Get Posts
-@app.post("/posts", tags=["posts"])
+@app.get("/posts", tags=["posts"])
 def get_posts():
     return {"data": posts}
 
@@ -53,6 +53,12 @@ def get_one_post(id: int):
             }
 
 
+# 4 Post a blog post [A handler for creating a post]
 
-
-
+@app.post("/posts", tags=["posts"])
+def add_post(post: PostSchema):
+    post.id = len(posts) + 1
+    posts.append(post.dict())
+    return {
+        "info": "Post added"
+    }
