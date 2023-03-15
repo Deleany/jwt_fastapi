@@ -12,4 +12,3 @@ class PostSchema(BaseModel):
                 "content": "some content about animals"
             }
         }
-
